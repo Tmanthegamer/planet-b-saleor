@@ -17,18 +17,22 @@
     }
 }
 
+%section {
+  border-bottom: 1px solid rgba(197, 197, 197, 1);
+}
+%item_box {
+  padding: 1rem 2rem;
+  border: 2px solid;
+  font-size: x-large;
+  font-weight: 400;
+}
 body {
   background-image: $gray-tile;
   .breadcrumb-section {
+    @extend %section;
     background-color: rgba(255, 255, 255, 1);
   }
   .innovation-section {
-    %item_box {
-      padding: 1rem 2rem;
-      border: 2px solid;
-      font-size: x-large;
-      font-weight: 400;
-    }
     .item {
       &_expr {
         font-weight: bold;
@@ -47,8 +51,5 @@ body {
         border-color: $brand;
       }
     }
-  }
-  .section {
-    border-bottom: 1px solid rgba(197, 197, 197, 1);
   }
 }
