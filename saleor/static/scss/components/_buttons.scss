@@ -15,7 +15,7 @@ a.btn, .btn {
     border: solid $brand;
     color: $yellow;
     &:hover, &:focus {
-      background-color: rgba($brand, 0.7);
+      background-color: $brand-hover;
     }
   }
 }

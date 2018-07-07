@@ -7,7 +7,7 @@ from impersonate.views import impersonate as orig_impersonate
 
 from ..account.models import User
 from ..dashboard.views import staff_member_required
-from ..product.utils import products_for_homepage, products_with_availability
+from ..product.utils import products_for_homepage, products_with_availability, brands_visible_to_user
 from ..initiatives.utils import initiatives_for_homepage
 from ..initiatives.utils import initiative_about_categories
 from ..initiatives.utils import initiative_sort_methods
@@ -36,9 +36,11 @@ def about(request):
     )
 
 def brands(request):
+    brands = brands_visible_to_user(None) #User should replace None
     return TemplateResponse(
         request, 'brands.html',
         {
+            'brands':brands,
             'container_class':container_class
         }
     )

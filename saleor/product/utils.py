@@ -16,6 +16,13 @@ from ..core.utils.filters import get_now_sorted_by
 from ..seo.schema.product import variant_json_ld
 from .forms import ProductForm
 
+def brands_visible_to_user(user):
+    from .models import Brand
+    return [Brand() for i in range(6)]
+    # TODO: Query for Brands
+    #if user.is_authenticated and user.is_active and user.is_staff:
+    #    return Brand.objects.all()
+    #return Brand.objects.available_products()
 
 def products_visible_to_user(user):
     # pylint: disable=cyclic-import

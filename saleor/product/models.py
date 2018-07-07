@@ -23,6 +23,19 @@ from ..discount.utils import calculate_discounted_price
 from ..seo.models import SeoModel
 from .utils import get_attributes_display_map
 
+class Brand(models.Model):
+    slug = 'tacos' # models.SlugField(max_length=128)
+    name = 'Abercrombie & Fitch' # models.CharField(max_length=128)
+    name_rich ='EST. 1892\nAbercrombie & Fitch\nNEW YORK' # models.TextField(blank=False)
+    description = 'Does the thing' # models.TextField(blank=True)
+    redirect_url = '/brands?brand='+slug
+    background_image_url = '/static/images/initiatives/forestFire.jpg'
+
+    class Meta:
+        app_label = 'initiative'
+
+    def __str__(self):
+        return self.name
 
 class Category(MPTTModel, SeoModel):
     name = models.CharField(max_length=128)

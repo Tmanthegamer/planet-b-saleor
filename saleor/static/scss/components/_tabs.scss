@@ -45,3 +45,53 @@
   margin-top: $global-margin;
 }
 
+/* Tab Content */
+.grid-tabs {
+  & .tab-content:not(.tab-active) {
+    display: none;
+  }
+}
+
+/* Tabs */
+.grid-tabs {
+  display: block;
+  width: 100%;
+
+  /* Default tab behaviour is evenly spaced list items */
+  & ul.tabs {
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgb(153, 153, 153);
+    list-style: none;
+    justify-content: space-around;
+  }
+  & ul li.tab {
+    position: relative;
+    flex: 1;
+    color: rgb(153, 153, 153);
+    &:hover,&:focus {
+      color: $brand-hover;
+    }
+    &:hover:after {
+      background-color: $brand-hover;
+    }
+  }
+  & ul li.tab.tab-active:not(:hover) {
+    color: $brand;
+    &:after {
+      background-color: $brand;
+    }
+  }
+  & ul li.tab:after {
+    display: block;
+    content: '';
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    height: 3px;
+  }
+}

@@ -1,10 +1,54 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+{% load get_object_properties from attributes %}
+{% load staticfiles %}
+{% load markdown from markdown %}
+
 {% block title %}
 	Brands
 {% endblock %}
 
+{% block breadcrumb %}
+  <ul class="breadcrumbs list-unstyled text-s-header">
+    <li>
+      <a href="{% url 'home' %}">
+        {% trans 'Home' context 'Main navigation item' %}
+      </a>
+    </li>
+    <li>
+      {% trans "Brands" context 'Main navigation item' %}
+    </li>
+  </ul>
+{% endblock breadcrumb %}
 
 {% block content %}
-	<h1>Brands</h1>
+	<div class="brands">
+        <div class="header grid grid-tabs p-around_large">
+            <ul class="tabs">
+                <li data-tab="brands" class="tab tab-active"><a>Brands</a></li>
+                <li data-tab="products" class="tab"><a>Products</a></li>
+            </ul>
+            <div class="content p-top_x-large">
+                <div data-tab="brands" id="brands" class="tab-content tab-active">
+                    <div class="grid grid-wrap grid-content_space">
+                        {% for brand in brands %}
+                            <div class="grid-col-4">
+                                <div class="category" style="background-image: url({{brand.background_image_url}});">
+                                    <a href="{{brand.redirect_url}}">
+                                        {{brand.name_rich}}
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div data-tab="products" id="products" class="tab-content">
+                    Product content
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
